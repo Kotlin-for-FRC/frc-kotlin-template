@@ -10,6 +10,8 @@ import edu.wpi.first.wpilibj2.command.PrintCommand
 class Robot : TimedRobot() {
     private val autonomousCommand = PrintCommand("Hello, autonomous!")
 
+    init {}
+
     override fun robotPeriodic() {
         CommandScheduler.getInstance().run()
     }
