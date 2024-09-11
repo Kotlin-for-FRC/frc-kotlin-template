@@ -26,10 +26,15 @@ class ExampleSubsystem(private val exampleProperty: Double): SubsystemBase() {
         }
 
     /**
-     * An example method querying a boolean state of the subsystem (for example, a digital sensor).
+     * An example property querying a boolean state of the subsystem (for example, a digital sensor).
      */
     val exampleCondition: Boolean
         get() = false /* get() = value will recompute the value every time exampleCondition is polled */
+
+    /**
+     * An example subsystem property using a lazy initializer.
+     */
+    val lazyProperty: Double by lazy { 2.0 } // by lazy will delay initialization until the property is first polled.
 
     override fun periodic() {
         // This method will be called once per scheduler run
