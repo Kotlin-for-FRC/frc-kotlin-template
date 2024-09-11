@@ -181,3 +181,6 @@ simgui.json
 simgui-ds.json
 simgui-window.json
 networktables.json
+
+# kls
+kls_database.db
