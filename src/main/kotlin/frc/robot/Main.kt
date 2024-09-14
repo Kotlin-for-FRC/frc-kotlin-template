@@ -14,7 +14,7 @@ object Main {
     /**
      * Main initialization function. Do not perform any initialization here.
      *
-     * <p>If you change your main robot class, change the parameter type.
+     * <p>If you change your main robot class, change the argument type.
      */
     @JvmStatic
     fun main(args: Array<String>) {

@@ -62,13 +62,13 @@ class ExampleSubsystem(
      * When this property is assigned a value, the code within the set(){ }
      * block will also run.
      *
-     * Note that this variable does not store data,
+     * Note that this property does not store any data,
      * and is essentially a proxy for 2 different methods.
      */
     var exampleGetSetProperty: Double
         get() = motor.get()
         set(value) {
-            motor.set(value)
+            if (digitalInput.get()) motor.set(value)
         }
 
     /**
@@ -96,8 +96,14 @@ class ExampleSubsystem(
 
     /**
      * An example subsystem property using a lazy initializer.
+     *
      * A lazy initializer will initialize the property the first
      * time it is accessed, rather than when the subsystem is created.
+     *
+     * A lazy initializer can be used to avoid expensive operations or
+     * resource allocation if an object is not used. For instance,
+     * giving a simulation object a lazy initializer can prevent it
+     * from using unnecessary CPU or memory on the real robot.
      */
     val lazyProperty: Int by lazy { digitalInput.channel }
 
