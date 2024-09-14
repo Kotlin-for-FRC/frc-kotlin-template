@@ -22,10 +22,5 @@ object ExampleSingletonSubsystem: SubsystemBase() {
         }.withTimeout(1.0)
     }
 
-    val exampleProperty: Double
-        get() {
-            return 2.0
-        }
-
     override fun periodic() {}
 }
