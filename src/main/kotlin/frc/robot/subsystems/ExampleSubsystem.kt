@@ -44,7 +44,7 @@ class ExampleSubsystem(
      *
      * Properties like these can be used to query a boolean state of the subsystem (for example, a digital sensor).
      */
-    val exampleCondition: Boolean get() = motor.isAlive
+    val motorIsAlive: Boolean get() = motor.isAlive
 
     /**
      * An example subsystem property using a lazy initializer.
@@ -57,7 +57,7 @@ class ExampleSubsystem(
      * giving a simulation object a lazy initializer can prevent it
      * from using unnecessary CPU or memory on the real robot.
      */
-    val lazyProperty by lazy {
+    val lazyMotorSim by lazy {
         DCMotorSim(
             DCMotor.getKrakenX60(1),
             1.0, 0.004
