@@ -11,14 +11,16 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase
 
 /** Creates a new ExampleSubsystem.  */
 class ExampleSubsystem(
-    exampleConstructorArg: Double,
+    motorID: Int,
     /**
      * An example of a property that is also a constructor argument.
      * The value of inputID depends on the value passed in
      * when the ExampleSubsystem is created.
      */
-    private val motorID: Int,
+    private val toPrint: Int,
 ): SubsystemBase() {
+    private val motor = PWMSparkMax(motorID)
+
     init {
         // This is run when the ExampleSubsystem instance is created.
     }
@@ -30,13 +32,10 @@ class ExampleSubsystem(
      */
     fun exampleMethodCommand(): Command =
         // Inline construction of command goes here.
-        // Subsystem::runOnce implicitly requires `this` subsystem.
-        runOnce {
-            println("This is an example command.")
-        }
-
-    private val motor = PWMSparkMax(motorID)
-    private var exampleMutableProperty = 2.0
+        // Subsystem.run and Subsystem.runOnce implicitly requires `this` subsystem.
+        run {
+            motor.setVoltage(5.0)
+        }.andThen(runOnce { println(toPrint) })
 
     /**
      * An example of a property with a custom getter.
@@ -59,7 +58,7 @@ class ExampleSubsystem(
      */
     val lazyMotorSim by lazy {
         DCMotorSim(
-            DCMotor.getKrakenX60(1),
+            DCMotor.getNEO(1),
             1.0, 0.004
         )
     }
