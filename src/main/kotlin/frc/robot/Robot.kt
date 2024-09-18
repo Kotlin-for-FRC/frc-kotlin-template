@@ -13,7 +13,7 @@ import frc.robot.subsystems.ExampleSubsystem
 
 class Robot : TimedRobot() {
     private val autonomousCommand = PrintCommand("Hello, autonomous!")
-    private val exampleSubsystem = ExampleSubsystem(1.0, 1, 2)
+    private val exampleSubsystem = ExampleSubsystem(1, 2)
 
     init {
         HAL.report(tResourceType.kResourceType_Language, tInstances.kLanguage_Kotlin)
