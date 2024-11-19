@@ -1,8 +1,11 @@
 plugins {
     id "java"
-    id "edu.wpi.first.GradleRIO" version "2024.3.2"
+    id "edu.wpi.first.GradleRIO" version "2025.1.1-beta-1"
     id("com.diffplug.spotless") version "7.0.0.BETA2"
-    id 'org.jetbrains.kotlin.jvm'
+    id 'org.jetbrains.kotlin.jvm' version "2.0.10"
+    // uncomment this(and the kapt wpilib.java.deps.wpilibAnnotations() lines)
+    // if you want to use Epilogue in your project
+    //id "org.jetbrains.kotlin.kapt" version "2.0.21"
 }
 
 java {
@@ -52,6 +55,7 @@ def includeDesktopSupport = true
 dependencies {
     implementation wpi.java.deps.wpilib()
     implementation wpi.java.vendor.java()
+    //kapt wpi.java.deps.wpilibAnnotations()
 
     roborioDebug wpi.java.deps.wpilibJniDebug(wpi.platforms.roborio)
     roborioDebug wpi.java.vendor.jniDebug(wpi.platforms.roborio)

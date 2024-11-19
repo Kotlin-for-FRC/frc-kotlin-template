@@ -27,7 +27,5 @@ class ExampleCommand(private val subsystem: ExampleSubsystem): Command() {
     override fun end(interrupted: Boolean) {}
 
     // Returns true when the command should end.
-    override fun isFinished(): Boolean {
-        return false
-    }
+    override fun isFinished(): Boolean = false
 }

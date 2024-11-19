@@ -4,6 +4,7 @@
 package frc.robot.subsystems
 
 import edu.wpi.first.math.system.plant.DCMotor
+import edu.wpi.first.math.system.plant.LinearSystemId
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax
 import edu.wpi.first.wpilibj.simulation.DCMotorSim
 import edu.wpi.first.wpilibj2.command.Command
@@ -58,8 +59,12 @@ class ExampleSubsystem(
      */
     val lazyMotorSim by lazy {
         DCMotorSim(
-            DCMotor.getNEO(1),
-            1.0, 0.004
+            LinearSystemId.createDCMotorSystem(
+                DCMotor.getNEO(1),
+                1.0,
+                0.004
+            ),
+            DCMotor.getNEO(1)
         )
     }
 
