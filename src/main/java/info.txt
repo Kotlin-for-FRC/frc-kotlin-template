@@ -1,0 +1,4 @@
+Place all of your java files/code here.
+The "kotlin" subdirectory will only compile kotlin files;
+while the "java" subdirectory can compile both java and kotlin files.
+
