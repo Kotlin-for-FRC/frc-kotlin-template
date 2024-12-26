@@ -11,3 +11,12 @@ fun exampleAuto(exampleSubsystem: ExampleSubsystem) =
         exampleSubsystem.exampleMethodCommand(),
         ExampleCommand(exampleSubsystem)
     )
+
+fun exampleAutoTwo() =
+    Commands.runOnce({
+        println("This is run once.")
+    }).andThen(
+        Commands.run({
+            println("This is run repeatedly.")
+        })
+    )

@@ -1,10 +1,14 @@
 plugins {
     id "java"
-    id "edu.wpi.first.GradleRIO" version "2025.1.1-beta-1"
+    id "edu.wpi.first.GradleRIO" version "2025.1.1-beta-3"
     id("com.diffplug.spotless") version "7.0.0.BETA2"
     id 'org.jetbrains.kotlin.jvm' version "2.0.10"
-    // uncomment this(and the kapt wpilib.java.deps.wpilibAnnotations() lines)
-    // if you want to use Epilogue in your project
+    /*
+    To setup epilogue,
+    uncomment the 'id "org.jetbrains.kotlin.kapt" version "2.0.21"' line below
+    and the 'kapt wpilib.java.deps.wpilibAnnotations()' line
+    in the 'dependencies' section
+     */
     //id "org.jetbrains.kotlin.kapt" version "2.0.21"
 }
 

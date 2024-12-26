@@ -21,6 +21,7 @@ class ExampleSubsystem(
     private val toPrint: Int,
 ): SubsystemBase() {
     private val motor = PWMSparkMax(motorID)
+    private var exampleBoolean = false
 
     init {
         // This is run when the ExampleSubsystem instance is created.
@@ -34,9 +35,9 @@ class ExampleSubsystem(
     fun exampleMethodCommand(): Command =
         // Inline construction of command goes here.
         // Subsystem.run and Subsystem.runOnce implicitly requires `this` subsystem.
-        run {
-            motor.setVoltage(5.0)
-        }.andThen(runOnce { println(toPrint) })
+        run { motor.setVoltage(5.0) }
+            .until { exampleBoolean }
+            .andThen(runOnce { println(toPrint) })
 
     /**
      * An example of a property with a custom getter.
