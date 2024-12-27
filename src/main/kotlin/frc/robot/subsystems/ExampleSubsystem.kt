@@ -58,7 +58,7 @@ class ExampleSubsystem(
      */
     val lazyMotorSim by lazy {
         DCMotorSim(
-            LinearSystemId.createDCMotorSystem(DCMotor.getNEO(1), 1.0, 0.004),
+            LinearSystemId.createDCMotorSystem(DCMotor.getNEO(1), 0.004, 1.0),
             DCMotor.getNEO(1),
         )
     }
