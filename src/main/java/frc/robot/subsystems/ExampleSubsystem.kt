@@ -18,7 +18,7 @@ class ExampleSubsystem(
      * the value passed in when the ExampleSubsystem is created.
      */
     private val toPrint: Int,
-) : SubsystemBase() {
+): SubsystemBase() {
     private val motor = PWMSparkMax(motorID)
     private var exampleBoolean = false
 

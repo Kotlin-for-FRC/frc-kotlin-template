@@ -4,12 +4,15 @@ plugins {
     id "com.diffplug.spotless" version "7.0.0.BETA4"
     id 'org.jetbrains.kotlin.jvm' version "2.0.10"
     /*
-    To setup epilogue,
-    uncomment the 'id "org.jetbrains.kotlin.kapt" version "2.0.21"' line below
-    and the 'kapt wpilib.java.deps.wpilibAnnotations()' line
-    in the 'dependencies' section
+    The 'id "org.jetbrains.kotlin.kapt" version "2.0.21"'
+    and 'kapt wpi.java.deps.wpilibAnnotations()'
+    lines are to enable epilogue support;
+    however, they can slightly increase initial compile times.
+
+    If you do not wish to use epilogue in your project,
+    you can remove them.
      */
-    //id "org.jetbrains.kotlin.kapt" version "2.0.21"
+    id "org.jetbrains.kotlin.kapt" version "2.0.21"
 }
 
 java {
@@ -59,7 +62,7 @@ def includeDesktopSupport = true
 dependencies {
     implementation wpi.java.deps.wpilib()
     implementation wpi.java.vendor.java()
-    //kapt wpi.java.deps.wpilibAnnotations()
+    kapt wpi.java.deps.wpilibAnnotations()
 
     roborioDebug wpi.java.deps.wpilibJniDebug(wpi.platforms.roborio)
     roborioDebug wpi.java.vendor.jniDebug(wpi.platforms.roborio)
