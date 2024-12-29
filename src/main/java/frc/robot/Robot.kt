@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler
 import edu.wpi.first.wpilibj2.command.PrintCommand
 import frc.robot.subsystems.ExampleSubsystem
 
-class Robot : TimedRobot() {
+class Robot: TimedRobot() {
     private val autonomousCommand = PrintCommand("Hello, autonomous!")
     private val exampleSubsystem = ExampleSubsystem(1, 2)
 

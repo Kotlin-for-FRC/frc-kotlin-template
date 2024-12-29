@@ -10,7 +10,7 @@ import frc.robot.subsystems.ExampleSubsystem
  *
  * @param subsystem The subsystem used by this command.
  */
-class ExampleCommand(private val subsystem: ExampleSubsystem) : Command() {
+class ExampleCommand(private val subsystem: ExampleSubsystem): Command() {
     init {
         // Use addRequirements() here to declare subsystem dependencies.
         addRequirements(subsystem)

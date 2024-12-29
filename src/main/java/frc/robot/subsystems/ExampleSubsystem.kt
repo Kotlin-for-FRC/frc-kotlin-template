@@ -5,10 +5,15 @@ package frc.robot.subsystems
 
 import edu.wpi.first.math.system.plant.DCMotor
 import edu.wpi.first.math.system.plant.LinearSystemId
+import edu.wpi.first.units.Units.Volts
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax
 import edu.wpi.first.wpilibj.simulation.DCMotorSim
 import edu.wpi.first.wpilibj2.command.Command
 import edu.wpi.first.wpilibj2.command.SubsystemBase
+
+// Constants are usually defined as private variables
+// outside the subsystem scope.
+private val EXAMPLE_CONSTANT = Volts.of(2.0)
 
 /** Creates a new ExampleSubsystem. */
 class ExampleSubsystem(
@@ -34,7 +39,9 @@ class ExampleSubsystem(
     fun exampleMethodCommand(): Command =
         // Inline construction of command goes here.
         // Subsystem.run and Subsystem.runOnce implicitly requires `this` subsystem.
-        run { motor.setVoltage(5.0) }.until { exampleBoolean }.andThen(runOnce { println(toPrint) })
+        run { motor.voltage = EXAMPLE_CONSTANT.`in`(Volts) }
+            .until { exampleBoolean }
+            .andThen(runOnce { println(toPrint) })
 
     /**
      * An example of a property with a custom getter. Every time this property is accessed, its
