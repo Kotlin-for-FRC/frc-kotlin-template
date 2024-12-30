@@ -3,15 +3,15 @@
 // the WPILib BSD license file in the root directory of this project.
 package frc.robot
 
-import edu.wpi.first.wpilibj.TimedRobot
 import edu.wpi.first.hal.FRCNetComm.tInstances
 import edu.wpi.first.hal.FRCNetComm.tResourceType
 import edu.wpi.first.hal.HAL
+import edu.wpi.first.wpilibj.TimedRobot
 import edu.wpi.first.wpilibj2.command.CommandScheduler
 import edu.wpi.first.wpilibj2.command.PrintCommand
 import frc.robot.subsystems.ExampleSubsystem
 
-class Robot : TimedRobot() {
+class Robot: TimedRobot() {
     private val autonomousCommand = PrintCommand("Hello, autonomous!")
     private val exampleSubsystem = ExampleSubsystem(1, 2)
 

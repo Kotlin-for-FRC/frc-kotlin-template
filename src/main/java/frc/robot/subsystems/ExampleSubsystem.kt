@@ -4,22 +4,28 @@
 package frc.robot.subsystems
 
 import edu.wpi.first.math.system.plant.DCMotor
+import edu.wpi.first.math.system.plant.LinearSystemId
+import edu.wpi.first.units.Units.Volts
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax
 import edu.wpi.first.wpilibj.simulation.DCMotorSim
 import edu.wpi.first.wpilibj2.command.Command
 import edu.wpi.first.wpilibj2.command.SubsystemBase
 
-/** Creates a new ExampleSubsystem.  */
+// Constants are usually defined as private variables
+// outside the subsystem scope.
+private val EXAMPLE_CONSTANT = Volts.of(2.0)
+
+/** Creates a new ExampleSubsystem. */
 class ExampleSubsystem(
     motorID: Int,
     /**
-     * An example of a property that is also a constructor argument.
-     * The value of inputID depends on the value passed in
-     * when the ExampleSubsystem is created.
+     * An example of a property that is also a constructor argument. The value of inputID depends on
+     * the value passed in when the ExampleSubsystem is created.
      */
     private val toPrint: Int,
 ): SubsystemBase() {
     private val motor = PWMSparkMax(motorID)
+    private var exampleBoolean = false
 
     init {
         // This is run when the ExampleSubsystem instance is created.
@@ -33,33 +39,34 @@ class ExampleSubsystem(
     fun exampleMethodCommand(): Command =
         // Inline construction of command goes here.
         // Subsystem.run and Subsystem.runOnce implicitly requires `this` subsystem.
-        run {
-            motor.setVoltage(5.0)
-        }.andThen(runOnce { println(toPrint) })
+        run { motor.voltage = EXAMPLE_CONSTANT.`in`(Volts) }
+            .until { exampleBoolean }
+            .andThen(runOnce { println(toPrint) })
 
     /**
-     * An example of a property with a custom getter.
-     * Every time this property is accessed, its value will be re-computed to a new value.
+     * An example of a property with a custom getter. Every time this property is accessed, its
+     * value will be re-computed to a new value.
      *
-     * Properties like these can be used to query a boolean state of the subsystem (for example, a digital sensor).
+     * Properties like these can be used to query a boolean state of the subsystem (for example, a
+     * digital sensor).
      */
-    val motorIsAlive: Boolean get() = motor.isAlive
+    val motorIsAlive: Boolean
+        get() = motor.isAlive
 
     /**
      * An example subsystem property using a lazy initializer.
      *
-     * A lazy initializer will initialize the property the first
-     * time it is accessed, rather than when the subsystem is created.
+     * A lazy initializer will initialize the property the first time it is accessed, rather than
+     * when the subsystem is created.
      *
-     * A lazy initializer can be used to avoid expensive operations or
-     * resource allocation if an object is not used. For instance,
-     * giving a simulation object a lazy initializer can prevent it
-     * from using unnecessary CPU or memory on the real robot.
+     * A lazy initializer can be used to avoid expensive operations or resource allocation if an
+     * object is not used. For instance, giving a simulation object a lazy initializer can prevent
+     * it from using unnecessary CPU or memory on the real robot.
      */
     val lazyMotorSim by lazy {
         DCMotorSim(
+            LinearSystemId.createDCMotorSystem(DCMotor.getNEO(1), 0.004, 1.0),
             DCMotor.getNEO(1),
-            1.0, 0.004
         )
     }
 
